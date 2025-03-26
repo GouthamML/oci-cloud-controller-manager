@@ -1251,6 +1251,10 @@ func (c *MockNetworkLoadBalancerClient) UpdateLoadBalancer(ctx context.Context, 
 // MockBlockStorageClient mocks BlockStorage client implementation
 type MockBlockStorageClient struct{}
 
+func (c *MockBlockStorageClient) GetBootVolume(ctx context.Context, id string) (*core.BootVolume, error) {
+	return nil, nil
+}
+
 // AwaitVolumeCloneAvailableOrTimeout implements client.BlockStorageInterface.
 func (*MockBlockStorageClient) AwaitVolumeCloneAvailableOrTimeout(ctx context.Context, id string) (*core.Volume, error) {
 	return nil, nil
