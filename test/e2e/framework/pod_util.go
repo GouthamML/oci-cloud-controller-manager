@@ -509,7 +509,7 @@ func (j *PVCTestJig) GetNodeNameFromPod(podName, namespace string) string {
 	return pod.Spec.NodeName
 }
 
-func (j *PVCTestJig) GetCSIPodNameRunningOnNode( nodeName string) (string) {
+func (j *PVCTestJig) GetCSIPodNameRunningOnNode(nodeName string) string {
 
 	// List all pods in the kube-system namespace
 	pods, err := j.KubeClient.CoreV1().Pods("kube-system").List(context.Background(), metav1.ListOptions{})
