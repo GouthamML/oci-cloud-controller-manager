@@ -1031,7 +1031,7 @@ func (j *PVCTestJig) NewPodForCSI(name string, namespace string, claimName strin
 	}
 
 	// Waiting for pod to be running
-	err = j.waitTimeoutForPodRunningInNamespace(pod.Name, namespace, slowPodStartTimeout)
+	err = j.WaitTimeoutForPodRunningInNamespace(pod.Name, namespace, slowPodStartTimeout)
 	if err != nil {
 		Failf("Pod %q is not Running: %v", pod.Name, err)
 	}
@@ -1143,7 +1143,7 @@ func (j *PVCTestJig) NewPodForCSIwAntiAffinity(name string, namespace string, cl
 	}
 
 	// Waiting for pod to be running
-	err = j.waitTimeoutForPodRunningInNamespace(pod.Name, namespace, slowPodStartTimeout)
+	err = j.WaitTimeoutForPodRunningInNamespace(pod.Name, namespace, slowPodStartTimeout)
 	if err != nil {
 		Failf("Pod %q is not Running: %v", pod.Name, err)
 	}
@@ -1198,7 +1198,7 @@ func (j *PVCTestJig) NewPodWithLabels(name string, namespace string, claimName s
 	}
 
 	// Waiting for pod to be running
-	err = j.waitTimeoutForPodRunningInNamespace(pod.Name, namespace, slowPodStartTimeout)
+	err = j.WaitTimeoutForPodRunningInNamespace(pod.Name, namespace, slowPodStartTimeout)
 	if err != nil {
 		Failf("Pod %q is not Running: %v", pod.Name, err)
 	}
@@ -1268,7 +1268,7 @@ func (j *PVCTestJig) NewPodForCSIClone(name string, namespace string, claimName 
 	}
 
 	// Waiting for pod to be running
-	err = j.waitTimeoutForPodRunningInNamespace(pod.Name, namespace, slowPodStartTimeout)
+	err = j.WaitTimeoutForPodRunningInNamespace(pod.Name, namespace, slowPodStartTimeout)
 	if err != nil {
 		Failf("Pod %q is not Running: %v", pod.Name, err)
 	}
@@ -1378,7 +1378,7 @@ func (j *PVCTestJig) NewPodForCSIFSSWrite(name string, namespace string, claimNa
 	}
 
 	// Waiting for pod to be running
-	err = j.waitTimeoutForPodRunningInNamespace(pod.Name, namespace, slowPodStartTimeout)
+	err = j.WaitTimeoutForPodRunningInNamespace(pod.Name, namespace, slowPodStartTimeout)
 	if err != nil {
 		Failf("Pod %q is not Running: %v", pod.Name, err)
 	}
