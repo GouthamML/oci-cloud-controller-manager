@@ -74,10 +74,6 @@ type MockKubeClient struct {
 	CoreClient *MockCoreClient
 }
 
-func (m MockKubeClient) CoordinationV1alpha1() v1alpha14.CoordinationV1alpha1Interface {
-	return nil
-}
-
 type MockKubeClientWithFailingRestClient struct {
 	CoreClient *MockCoreClientWithFailingRestClient
 }
@@ -89,19 +85,11 @@ func (m MockKubeClient) StoragemigrationV1alpha1() alpha1.StoragemigrationV1alph
 type MockCoreClient v12.CoreV1Client
 type MockCoreClientWithFailingRestClient v12.CoreV1Client
 
-func (m MockKubeClientWithFailingRestClient) CoordinationV1alpha2() v1alpha14.CoordinationV1alpha2Interface {
+func (m MockKubeClientWithFailingRestClient) ResourceV1alpha2() v1alpha2.ResourceV1alpha2Interface {
 	//TODO implement me
 	panic("implement me")
 }
 
-func (m MockKubeClientWithFailingRestClient) ResourceV1beta1() v1beta1.ResourceV1beta1Interface {
-	//TODO implement me
-	panic("implement me")
-}
-func (m MockKubeClientWithFailingRestClient) ResourceV1alpha3() v1alpha3.ResourceV1alpha3Interface {
-	//TODO implement me
-	panic("implement me")
-}
 func (m MockKubeClientWithFailingRestClient) Discovery() discovery.DiscoveryInterface {
 	//TODO implement me
 	panic("implement me")
