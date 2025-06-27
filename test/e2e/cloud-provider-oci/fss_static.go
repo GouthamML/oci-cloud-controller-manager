@@ -51,11 +51,11 @@ var _ = Describe("FSS Static in-transit encryption test", func() {
 
 var _ = Describe("Mount Options Static FSS test", func() {
 	f := framework.NewDefaultFramework("fss-mnt-opt")
-	opts := framework.Options{
-		FSSProvisionerName: setupF.FSSProvisionerName,
-	}
 	Context("[cloudprovider][storage][csi][fss][static]", func() {
 		It("Create PV PVC and POD for CSI-FSS with mount options", func() {
+			opts := framework.Options{
+				FSSProvisionerName: setupF.FSSProvisionerName,
+			}
 			pvcJig := framework.NewPVCTestJig(f.ClientSet, "csi-fss-e2e-test")
 			mountOptions := []string{"sync", "hard", "noac", "nolock"}
 			pv := pvcJig.CreatePVorFailFSS(f.Namespace.Name, setupF.VolumeHandle, "false", "ReadWriteMany", "", mountOptions, opts)
@@ -88,11 +88,11 @@ func TestEncryptionType(f *framework.CloudProviderFramework, mountOptions []stri
 
 var _ = Describe("Multiple Pods Static FSS test", func() {
 	f := framework.NewDefaultFramework("multiple-pod")
-	opts := framework.Options{
-		FSSProvisionerName: setupF.FSSProvisionerName,
-	}
 	Context("[cloudprovider][storage][csi][fss][static]", func() {
 		It("Multiple Pods should be able to read write same file", func() {
+			opts := framework.Options{
+				FSSProvisionerName: setupF.FSSProvisionerName,
+			}
 			pvcJig := framework.NewPVCTestJig(f.ClientSet, "csi-fss-e2e-test")
 			pv := pvcJig.CreatePVorFailFSS(f.Namespace.Name, setupF.VolumeHandle, "false", "ReadWriteMany", "", []string{}, opts)
 			pvc := pvcJig.CreateAndAwaitPVCOrFailStaticFSS(f.Namespace.Name, pv.Name, "50Gi", nil)
@@ -134,11 +134,11 @@ func checkNodeAvailability(f *framework.CloudProviderFramework) {
 
 var _ = Describe("Static FSS RWO Tests", func() {
 	f := framework.NewDefaultFramework("fss-rwo")
-	opts := framework.Options{
-		FSSProvisionerName: setupF.FSSProvisionerName,
-	}
 	Context("[cloudprovider][storage][csi][fss][static][rwo]", func() {
 		It("Verify volume group ownership change for RWO volume when fsType and fsGroup are defined", func() {
+			opts := framework.Options{
+				FSSProvisionerName: setupF.FSSProvisionerName,
+			}
 			pvcJig := framework.NewPVCTestJig(f.ClientSet, "csi-rwo-fss-e2e-test")
 			pv := pvcJig.CreatePVorFailFSS(f.Namespace.Name, setupF.VolumeHandle, "false", "ReadWriteOnce", "nfs", []string{}, opts)
 			pvc := pvcJig.CreateAndAwaitPVCOrFailStaticFSS(f.Namespace.Name, pv.Name, "50Gi", func(pvc *v1.PersistentVolumeClaim) {
